@@ -1,17 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Movie API Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Endpoints Documentation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Movie API</h1>
-    <p>build the server-side component of a “movies” web application. The web
-        application will provide users with access to information about different
-        movies, directors, and genres. Users will be able to sign up, update their
-        personal information, and create a list of their favorite movies.</p>
+    <div class="container mt-5">
+        <h2 class="mb-4">letFlix App API Endpoints Documentation</h2>
+        <p> the API serves as a platform for managing user profiles and their movie preferences, along with providing
+            access to a database of movies, searchable by various criteria like title, genre, and director. This makes
+            it a useful tool for applications related to movie recommendations, user preference tracking, and film
+            database management.</p>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Operation</th>
+                    <th>Method</th>
+                    <th>URL</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User Operations -->
+                <tr>
+                    <td>Create User</td>
+                    <td>POST</td>
+                    <td>/users</td>
+                    <td>Adds a new user.</td>
+                </tr>
+                <tr>
+                    <td>Update User</td>
+                    <td>PUT</td>
+                    <td>/users/:id</td>
+                    <td>Updates a user's information.</td>
+                </tr>
+                <tr>
+                    <td>Add Favorite Movie</td>
+                    <td>POST</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>Adds a movie to user's favorites.</td>
+                </tr>
+                <tr>
+                    <td>Remove Favorite Movie</td>
+                    <td>DELETE</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>Removes a movie from user's favorites.</td>
+                </tr>
+                <tr>
+                    <td>Delete User</td>
+                    <td>DELETE</td>
+                    <td>/users/:id</td>
+                    <td>Deletes a user.</td>
+                </tr>
+                <!-- Movie Operations -->
+                <tr>
+                    <td>Get All Movies</td>
+                    <td>GET</td>
+                    <td>/movies</td>
+                    <td>Retrieves all movies.</td>
+                </tr>
+                <tr>
+                    <td>Get Movie by Title</td>
+                    <td>GET</td>
+                    <td>/movies/:title</td>
+                    <td>Retrieves a specific movie by title.</td>
+                </tr>
+                <tr>
+                    <td>Get Movies by Genre</td>
+                    <td>GET</td>
+                    <td>/movies/genre/:genreName</td>
+                    <td>Retrieves movies of a specific genre.</td>
+                </tr>
+                <tr>
+                    <td>Get Movies by Director</td>
+                    <td>GET</td>
+                    <td>/movies/directors/:directorName</td>
+                    <td>Retrieves movies by a specific director.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -4,13 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>LetsFlix!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #2b2b2b;
+            padding: 10px;
+        }
+
+        .nav-item {
+            margin: 0 10px;
+        }
+
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .featured-movie {
+            width: 250px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .featured-movie-title {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .featured-movies {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Welcome to the Movie API</h1>
-</body>
+    <header class="header">
+        <h1>LetsFlix</h1>
+    </header>
 
-<script>server.js</script>
+    <nav class="nav-bar">
+        <div class="nav-item">Home</div>
+        <div class="nav-item">About</div>
+        <div class="nav-item">Contact</div>
+    </nav>
+
+    <section class="section">
+        <h2>Featured Movie</h2>
+        <img class="featured-movie" src="path-to-your-image.jpg" alt="Featured Movie">
+        <h3 class="featured-movie-title">Movie Title</h3>
+    </section>
+
+    <section class="section">
+        <h2>Featured Movies</h2>
+        <div class="featured-movies">
+            <!-- Add more featured movies as needed -->
+            <img class="featured-movie" src="path-to-your-image.jpg" alt="Featured Movie">
+            <img class="featured-movie" src="path-to-your-image.jpg" alt="Featured Movie">
+            <img class="featured-movie" src="path-to-your-image.jpg" alt="Featured Movie">
+        </div>
+    </section>
+    <script src="index.js"></script>
+</body>
 
 </html>
