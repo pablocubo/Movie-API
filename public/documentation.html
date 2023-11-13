@@ -22,65 +22,164 @@
                     <th>Operation</th>
                     <th>Method</th>
                     <th>URL</th>
-                    <th>Description</th>
+                    <th>Request body data format</th>
+                    <th>Response body data format</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- User Operations -->
                 <tr>
                     <td>Create User</td>
-                    <td>POST</td>
+                    <td><strong>POST</strong></td>
                     <td>/users</td>
-                    <td>Adds a new user.</td>
+                    <td>
+                        A JSON object holding user data, structured like this. Example:
+                        <code style="background-color: #faf8fa; color: #de3d3d333;">
+                        {
+                            "name": "Alice",
+                            "favoriteMovies": ["Inception", "Interstellar"]
+                        }
+                        </code>
+                    </td>
+                    <td>
+                        A JSON object holding user data plus an ID and an array for placing favorite movies. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        {
+                            "id": "generated-uuid",
+                            "name": "Alice",
+                            "favoriteMovies": ["Inception", "Interstellar"]
+                        }
+                        </code>
+                    </td>
+
                 </tr>
                 <tr>
                     <td>Update User</td>
-                    <td>PUT</td>
+                    <td><strong>PUT</strong></td>
                     <td>/users/:id</td>
-                    <td>Updates a user's information.</td>
+                    <td> A JSON object holding user data, structured like this. Example:
+                        <code style="background-color: #faf8fa; color: #de3d3d333;">
+                            {
+                                "name": "Alice Updated"
+                            }
+                        </code>
+                    </td>
+                    <td>
+                        A JSON object holding user data plus an ID and an array for placing favorite movies. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            {
+                                "id": "existing-user-id",
+                                "name": "Alice Updated",
+                                "favoriteMovies": ["Inception", "Interstellar"]
+                            }
+                        </code>
+                    </td>
                 </tr>
                 <tr>
                     <td>Add Favorite Movie</td>
-                    <td>POST</td>
+                    <td><strong>POST</strong></td>
                     <td>/users/:id/:movieTitle</td>
-                    <td>Adds a movie to user's favorites.</td>
+                    <td>
+                        NONE
+                    </td>
+                    <td>
+                        A JSON object which adds a movie title to a user's list of favorite movies. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            Response: Titanic has been added to user 1's array
+                            
+                        </code>
+                    </td>
                 </tr>
                 <tr>
                     <td>Remove Favorite Movie</td>
-                    <td>DELETE</td>
+                    <td><strong>DELETE</strong></td>
                     <td>/users/:id/:movieTitle</td>
-                    <td>Removes a movie from user's favorites.</td>
+                    <td>NONE</td>
+                    <td>
+                        A JSON object which removes a movie title to a user's list of favorite movies. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            Response: Titanic has been removed from user 1's favorites.
+                            
+                        </code>
+                    </td>
                 </tr>
                 <tr>
                     <td>Delete User</td>
-                    <td>DELETE</td>
+                    <td><strong>DELETE</strong></td>
                     <td>/users/:id</td>
-                    <td>Deletes a user.</td>
+                    <td>NONE</td>
+                    <td>
+                        A JSON object which removes a User. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            Response: user 1 has been removed.
+                            
+                        </code>
+                    </td>
                 </tr>
                 <!-- Movie Operations -->
                 <tr>
                     <td>Get All Movies</td>
-                    <td>GET</td>
+                    <td><strong>GET</strong></td>
                     <td>/movies</td>
-                    <td>Retrieves all movies.</td>
+                    <td>NONE</td>
+                    <td>A JSON object holding an array with all movies.</td>
                 </tr>
                 <tr>
                     <td>Get Movie by Title</td>
-                    <td>GET</td>
+                    <td><strong>GET</strong></td>
                     <td>/movies/:title</td>
-                    <td>Retrieves a specific movie by title.</td>
+                    <td>NONE</td>
+
+                    <td>
+                        A JSON object holding user data plus an ID and an array for placing favorite movies. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            {
+                                "title": "Titanic",
+                                "genre": {
+                                    "name": "Drama, Romance",
+                                    "description": "An epic romance set against the ill-fated maiden voyage of the R.M.S. Titanic."
+                                },
+                                "director": {
+                                    "name": "James Cameron",
+                                    "Bio": "A filmmaker known for his ambitious and visually spectacular films, often pushing the boundaries of film technology.",
+                                    "Birth": "August 16, 1954, in Kapuskasing, Ontario, Canada"
+                                },
+                                "image URL": "https://www.imdb.com/title/tt0120338/mediaviewer/rm10105600/?ref_=tt_ov_i",
+                                "feature": false
+                            }
+                        </code>
+                    </td>
                 </tr>
                 <tr>
                     <td>Get Movies by Genre</td>
-                    <td>GET</td>
+                    <td><strong>GET</strong></td>
                     <td>/movies/genre/:genreName</td>
-                    <td>Retrieves movies of a specific genre.</td>
+                    <td>NONE</td>
+                    <td>
+                        A JSON object holding data about a genre containing name and description properties. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            {
+                                "name": "Fantasy",
+                                "description": "In film and television, the fantasy genre encompasses fiction that involves supernatural elements and settings beyond the realm of reality. It often includes magical creatures, mystical forces, and worlds filled with wonder and adventure. Fantasy allows for the exploration of themes like heroism, morality, and the struggle between good and evil in a setting detached from mundane reality."
+                            }
+                        </code>
+                    </td>
                 </tr>
                 <tr>
                     <td>Get Movies by Director</td>
-                    <td>GET</td>
+                    <td><strong>GET</strong></td>
                     <td>/movies/directors/:directorName</td>
-                    <td>Retrieves movies by a specific director.</td>
+                    <td>NONE</td>
+                    <td>
+                        A JSON object holding data about a director. Example:
+                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                            {
+                                "name": "Steven Spielberg",
+                                "Bio": "A highly acclaimed director known for his impactful storytelling and versatility in various film genres.",
+                                "Birth": "December 18, 1946, in Cincinnati, Ohio, USA"
+                            }
+                        </code>
+                    </td>
                 </tr>
             </tbody>
         </table>
