@@ -34,20 +34,26 @@
                     <td>/users</td>
                     <td>
                         A JSON object holding user data, structured like this. Example:
-                        <code style="background-color: #faf8fa; color: #de3d3d333;">
-                        {
-                            "name": "Alice",
-                            "favoriteMovies": ["Inception", "Interstellar"]
-                        }
+                        <code style="background-color: #faf8fa; color: #f54c4c;">
+                            {
+                                Username: req.body.Username,
+                                Password: req.body.Password,
+                                Email: req.body.Email,
+                                Birthday: req.body.Birthday,
+                                FavoriteMovies: []
+                            },
                         </code>
                     </td>
                     <td>
                         A JSON object holding user data plus an ID and an array for placing favorite movies. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
                         {
-                            "id": "generated-uuid",
-                            "name": "Alice",
-                            "favoriteMovies": ["Inception", "Interstellar"]
+                            _id: ObjectId('6564ca07f34a5a77e159f991'),
+    email: 'user2@example.com',
+    fullName: 'John Doe2',
+    password: 'pass1223',
+    Birtday: ISODate('1970-01-01T00:00:00.000Z'),
+    favoriteMovies: [ 'The Godfather', 'Inception', 'The Matrix' ]
                         }
                         </code>
                     </td>
@@ -58,20 +64,26 @@
                     <td><strong>PUT</strong></td>
                     <td>/users/:id</td>
                     <td> A JSON object holding user data, structured like this. Example:
-                        <code style="background-color: #faf8fa; color: #de3d3d333;">
+                        <code style="background-color: #faf8fa; color: #f54c4c;">
                             {
-                                "name": "Alice Updated"
+                                Username: req.body.Username,
+                                Password: req.body.Password,
+                                Email: req.body.Email,
+                                Birthday: req.body.Birthday
                             }
                         </code>
                     </td>
                     <td>
                         A JSON object holding user data plus an ID and an array for placing favorite movies. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
                             {
-                                "id": "existing-user-id",
-                                "name": "Alice Updated",
-                                "favoriteMovies": ["Inception", "Interstellar"]
-                            }
+                                _id: ObjectId('6564ca07f34a5a77e159f991'),
+                                email: 'user2@example.com',
+                                fullName: 'John Doe2',
+                                password: 'pass1223',
+                                Birtday: ISODate('1970-01-01T00:00:00.000Z'),
+                                favoriteMovies: [ 'The Godfather', 'Inception', 'The Matrix' ]
+                              }
                         </code>
                     </td>
                 </tr>
@@ -84,7 +96,7 @@
                     </td>
                     <td>
                         A JSON object which adds a movie title to a user's list of favorite movies. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
                             Response: Titanic has been added to user 1's array
                             
                         </code>
@@ -97,7 +109,7 @@
                     <td>NONE</td>
                     <td>
                         A JSON object which removes a movie title to a user's list of favorite movies. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
                             Response: Titanic has been removed from user 1's favorites.
                             
                         </code>
@@ -110,7 +122,7 @@
                     <td>NONE</td>
                     <td>
                         A JSON object which removes a User. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
                             Response: user 1 has been removed.
                             
                         </code>
@@ -132,20 +144,23 @@
 
                     <td>
                         A JSON object holding user data plus an ID and an array for placing favorite movies. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
                             {
-                                "title": "Titanic",
-                                "genre": {
-                                    "name": "Drama, Romance",
-                                    "description": "An epic romance set against the ill-fated maiden voyage of the R.M.S. Titanic."
+                                
+                                Title: 'The Social Network',
+                                Description: 'The story of Mark Zuckerberg as he creates the social networking site Facebook, navigating through its rise to fame and the resulting lawsuits.',
+                                Genre: {
+                                  Name: 'Drama',
+                                  Description: 'Movies portraying realistic or fictional human emotions and experiences.'
                                 },
-                                "director": {
-                                    "name": "James Cameron",
-                                    "Bio": "A filmmaker known for his ambitious and visually spectacular films, often pushing the boundaries of film technology.",
-                                    "Birth": "August 16, 1954, in Kapuskasing, Ontario, Canada"
+                                Director: {
+                                  Name: 'David Fincher',
+                                  Bio: 'Director known for various acclaimed films.',
+                                  Birth: '1962',
+                                  Death: ''
                                 },
-                                "image URL": "https://www.imdb.com/title/tt0120338/mediaviewer/rm10105600/?ref_=tt_ov_i",
-                                "feature": false
+                                ImagePath: 'the_social_network.jpg',
+                                Featured: true
                             }
                         </code>
                     </td>
@@ -157,11 +172,11 @@
                     <td>NONE</td>
                     <td>
                         A JSON object holding data about a genre containing name and description properties. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
-                            {
-                                "name": "Fantasy",
-                                "description": "In film and television, the fantasy genre encompasses fiction that involves supernatural elements and settings beyond the realm of reality. It often includes magical creatures, mystical forces, and worlds filled with wonder and adventure. Fantasy allows for the exploration of themes like heroism, morality, and the struggle between good and evil in a setting detached from mundane reality."
-                            }
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
+                            Genre: {
+                                Name: 'Drama',
+                                Description: 'Movies portraying realistic or fictional human emotions and experiences.'
+                              },
                         </code>
                     </td>
                 </tr>
@@ -172,12 +187,13 @@
                     <td>NONE</td>
                     <td>
                         A JSON object holding data about a director. Example:
-                        <code style="background-color: #f8f9fa; color: #de3d3d333;">
-                            {
-                                "name": "Steven Spielberg",
-                                "Bio": "A highly acclaimed director known for his impactful storytelling and versatility in various film genres.",
-                                "Birth": "December 18, 1946, in Cincinnati, Ohio, USA"
-                            }
+                        <code style="background-color: #f8f9fa; color: #f54c4c;">
+                            Director: {
+                                Name: 'Martin Scorsese',
+                                Bio: 'Director known for various acclaimed films.',
+                                Birth: '1942',
+                                Death: ''
+                              },
                         </code>
                     </td>
                 </tr>
