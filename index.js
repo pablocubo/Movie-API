@@ -32,29 +32,59 @@ app.get('/', (req, res) => {
   Email: String,
   Birthday: Date
 }*/
+//The folloving code app.(post,get,put,delete) is for the CRUD operations
+// CREATE requests, ADD NEW USERS
 app.post('/users', async (req, res) => {
-    const { Username, Password, Email, Birthday } = req.body;
-
-    try {
-        const existingUser = await Users.findOne({ Username });
-
-        if (existingUser) {
-            return res.status(400).send(Username + ' already exists');
-        }
-
-        const newUser = await Users.create({
-            username,
-            password,
-            email,
-            Birthday
+    await Users.findOne({ Username: req.body.Username })
+        .then((user) => {
+            if (user) {
+                return res.status(400).send(req.body.Username + 'already exists');
+            } else {
+                Users
+                    .create({
+                        Username: req.body.Username,
+                        Password: req.body.Password,
+                        Email: req.body.Email,
+                        Birthday: req.body.Birthday
+                    })
+                    .then((user) => { res.status(201).json(user) })
+                    .catch((error) => {
+                        console.error(error);
+                        res.status(500).send('Error: ' + error);
+                    })
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
         });
-
-        res.status(201).json(newUser);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error: ' + error);
-    }
 });
+
+
+// READ (GET) all users
+app.get('/users', async (req, res) => {
+    await Users.find()
+        .then((users) => {
+            res.status(201).json(users)
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
+// READ (GET) a user by username
+app.get('/users/:Username', async (req, res) => {
+    await Users.findOne({ Username: req.params.Username })
+        .then((user) => {
+            res.json(user);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
 
 app.use('/documentation', express.static('public'));
 

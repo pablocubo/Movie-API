@@ -15,3 +15,8 @@ collection-2--623965520817307195.wt
 collection-4--623965520817307195.wt
 index copy.js
 mongod.lock
+WiredTiger
+WiredTiger.lock
+WiredTiger.turtle
+WiredTiger.wt
+WiredTigerHS.wt
