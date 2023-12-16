@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 //define the structure of movie documents in the collection
 let movieSchema = mongoose.Schema({
-    Title: { type: String, required: true },
+    title: { type: String, required: true },
     Description: { type: String, required: true },
     Genre: {
         Name: String,
@@ -23,11 +23,11 @@ let movieSchema = mongoose.Schema({
 });
 
 let userSchema = mongoose.Schema({
-    username: { type: String, required: true },
-    password: { type: String, required: true },
-    email: { type: String, required: true },
+    Username: { type: String, required: true },
+    Password: { type: String, required: true },
+    Email: { type: String, required: true },
     Birthday: Date,
-    favoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
+    FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
 });
 
 //Models in Mongoose act as constructors for MongoDB documents. They allow you to create, read, update, and delete documents

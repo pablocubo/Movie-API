@@ -12,23 +12,10 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/letflix_data', {
-    serverSelectionTimeoutMS: 30000,
-    socketTimeoutMS: 45000,
-})
-    .then(() => {
-        console.log('Connected to MongoDB');
-        app.listen(8080, () => {
-            console.log('Your app is listening on port 8080');
-        });
-    })
-    .catch((error) => {
-        console.error('Error connecting to MongoDB:', error);
-    });
+mongoose.connect('mongodb://localhost:27017/letflix_data', { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 // Define your routes and other middleware below this point
-
-
 
 app.get('/', (req, res) => {
     res.send("Welcome to myFlix!");
