@@ -15,6 +15,7 @@ const Users = Models.User;
 mongoose.connect('mongodb://localhost:27017/letflix_data', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
+
 // Define your routes and other middleware below this point
 
 app.get('/', (req, res) => {
@@ -34,7 +35,29 @@ app.get('/', (req, res) => {
 }*/
 //The folloving code app.(post,get,put,delete) is for the CRUD operations
 // CREATE requests, ADD NEW USERS
+
 app.post('/users', async (req, res) => {
+    const { Username, Password, Email, Birthday } = req.body;
+
+    try {
+        const existingUser = await Users.findOne({ Username });
+        if (existingUser) {
+            return res.status(400).send('Username already exists');
+        }
+        const newUser = await Users.create({
+            Username,
+            Password,
+            Email,
+            Birthday
+        });
+
+        res.status(201).json(newUser);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error creating user: ' + error.message);
+    }
+});
+/* app.post('/users', async (req, res) => {
     await Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
@@ -58,7 +81,7 @@ app.post('/users', async (req, res) => {
             console.error(error);
             res.status(500).send('Error: ' + error);
         });
-});
+}); */
 
 
 // READ (GET) all users
