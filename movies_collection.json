@@ -1,10 +1,192 @@
-{"_id":{"$oid":"6564aed8f34a5a77e159f981"},"Title":"Silence of the Lambs","Description":"A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.","Genre":{"Name":"Thriller","Description":"Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."},"Director":{"Name":"Jonathan Demme","Bio":"Robert Jonathan Demme was an American director, producer, and screenwriter.","Birth":"1944","Death":"2017"},"ImagePath":"silenceofthelambs.png","Featured":true}
-{"_id":{"$oid":"6564b534f34a5a77e159f982"},"Title":"The Dark Knight","Description":"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.","Genre":{"Name":"Action","Description":"Movies involving thrilling action sequences and intense drama."},"Director":{"Name":"Chistopher Nolan","Bio":"Director known for various acclaimed films.","Birth":"1970","Death":""},"ImagePath":"dark_knight.jpg","Featured":true}
-{"_id":{"$oid":"6564b636f34a5a77e159f983"},"Title":"Forrest Gump","Description":"The story of a remarkable individual who overcame challenges to achieve remarkable success.","Genre":{"Name":"Drama","Description":"Movies portraying realistic or fictional human emotions and experiences."},"Director":{"Name":"Robert Zemeckis","Bio":"Director known for various acclaimed films.","Birth":"1951","Death":""},"ImagePath":"forrest_gump.jpg","Featured":true}
-{"_id":{"$oid":"6564b677f34a5a77e159f984"},"Title":"The Shawshank Redemption","Description":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.","Genre":{"Name":"Drama","Description":"Movies portraying realistic or fictional human emotions and experiences."},"Director":{"Name":"Frank Darabont","Bio":"Director known for various acclaimed films.","Birth":"1959","Death":""},"ImagePath":"shawshank_redemption.jpg","Featured":true}
-{"_id":{"$oid":"6564b6fff34a5a77e159f985"},"Title":"The Godfather","Description":"The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.","Genre":{"Name":"Crime","Description":"Movies involving criminal activities, mafia, or underworld."},"Director":{"Name":"Francis Ford Coppola","Bio":"Director known for various acclaimed films.","Birth":"1939","Death":""},"ImagePath":"godfather.jpg","Featured":true}
-{"_id":{"$oid":"6564b860f34a5a77e159f986"},"Title":"Pulp Fiction","Description":"The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.","Genre":{"Name":"Crime","Description":"Movies involving criminal activities or underworld connections."},"Director":{"Name":"Quentin Tarantino","Bio":"Director known for unique storytelling.","Birth":"1963","Death":""},"ImagePath":"pulp_fiction.jpg","Featured":true}
-{"_id":{"$oid":"6564b86ff34a5a77e159f987"},"Title":"Inception","Description":"A thief who enters the dreams of others to steal their secrets.","Genre":{"Name":"Science Fiction","Description":"Movies exploring futuristic and speculative concepts."},"Director":{"Name":"Christopher Nolan","Bio":"Director known for various acclaimed films.","Birth":"1970","Death":""},"ImagePath":"inception.jpg","Featured":true}
-{"_id":{"$oid":"6564b87cf34a5a77e159f988"},"Title":"Goodfellas","Description":"The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.","Genre":{"Name":"Crime","Description":"Movies involving criminal activities or underworld connections."},"Director":{"Name":"Martin Scorsese","Bio":"Director known for various acclaimed films.","Birth":"1942","Death":""},"ImagePath":"goodfellas.jpg","Featured":true}
-{"_id":{"$oid":"6564bef5f34a5a77e159f989"},"Title":"Fight Club","Description":"An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.","Genre":{"Name":"Drama","Description":"Movies portraying realistic or fictional human emotions and experiences."},"Director":{"Name":"David Fincher","Bio":"Director known for various acclaimed films.","Birth":"1962","Death":""},"ImagePath":"fight_club.jpg","Featured":true}
-{"_id":{"$oid":"6564c0cbf34a5a77e159f98a"},"Title":"The Social Network","Description":"The story of Mark Zuckerberg as he creates the social networking site Facebook, navigating through its rise to fame and the resulting lawsuits.","Genre":{"Name":"Drama","Description":"Movies portraying realistic or fictional human emotions and experiences."},"Director":{"Name":"David Fincher","Bio":"Director known for various acclaimed films.","Birth":"1962","Death":""},"ImagePath":"the_social_network.jpg","Featured":true}
+[
+    {
+        "_id": {
+            "$oid": "6564aed8f34a5a77e159f981"
+        },
+        "Title": "Silence of the Lambs",
+        "Description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+        "Genre": {
+            "Name": "Thriller",
+            "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+        },
+        "Director": {
+            "Name": "Jonathan Demme",
+            "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+            "Birth": "1944",
+            "Death": "2017"
+        },
+        "ImagePath": "silenceofthelambs.png",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b534f34a5a77e159f982"
+        },
+        "Title": "The Dark Knight",
+        "Description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+        "Genre": {
+            "Name": "Action",
+            "Description": "Movies involving thrilling action sequences and intense drama."
+        },
+        "Director": {
+            "Name": "Chistopher Nolan",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1970",
+            "Death": ""
+        },
+        "ImagePath": "dark_knight.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b636f34a5a77e159f983"
+        },
+        "Title": "Forrest Gump",
+        "Description": "The story of a remarkable individual who overcame challenges to achieve remarkable success.",
+        "Genre": {
+            "Name": "Drama",
+            "Description": "Movies portraying realistic or fictional human emotions and experiences."
+        },
+        "Director": {
+            "Name": "Robert Zemeckis",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1951",
+            "Death": ""
+        },
+        "ImagePath": "forrest_gump.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b677f34a5a77e159f984"
+        },
+        "Title": "The Shawshank Redemption",
+        "Description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "Genre": {
+            "Name": "Drama",
+            "Description": "Movies portraying realistic or fictional human emotions and experiences."
+        },
+        "Director": {
+            "Name": "Frank Darabont",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1959",
+            "Death": ""
+        },
+        "ImagePath": "shawshank_redemption.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b6fff34a5a77e159f985"
+        },
+        "Title": "The Godfather",
+        "Description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        "Genre": {
+            "Name": "Crime",
+            "Description": "Movies involving criminal activities, mafia, or underworld."
+        },
+        "Director": {
+            "Name": "Francis Ford Coppola",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1939",
+            "Death": ""
+        },
+        "ImagePath": "godfather.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b860f34a5a77e159f986"
+        },
+        "Title": "Pulp Fiction",
+        "Description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        "Genre": {
+            "Name": "Crime",
+            "Description": "Movies involving criminal activities or underworld connections."
+        },
+        "Director": {
+            "Name": "Quentin Tarantino",
+            "Bio": "Director known for unique storytelling.",
+            "Birth": "1963",
+            "Death": ""
+        },
+        "ImagePath": "pulp_fiction.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b86ff34a5a77e159f987"
+        },
+        "Title": "Inception",
+        "Description": "A thief who enters the dreams of others to steal their secrets.",
+        "Genre": {
+            "Name": "Science Fiction",
+            "Description": "Movies exploring futuristic and speculative concepts."
+        },
+        "Director": {
+            "Name": "Christopher Nolan",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1970",
+            "Death": ""
+        },
+        "ImagePath": "inception.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564b87cf34a5a77e159f988"
+        },
+        "Title": "Goodfellas",
+        "Description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+        "Genre": {
+            "Name": "Crime",
+            "Description": "Movies involving criminal activities or underworld connections."
+        },
+        "Director": {
+            "Name": "Martin Scorsese",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1942",
+            "Death": ""
+        },
+        "ImagePath": "goodfellas.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564bef5f34a5a77e159f989"
+        },
+        "Title": "Fight Club",
+        "Description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+        "Genre": {
+            "Name": "Drama",
+            "Description": "Movies portraying realistic or fictional human emotions and experiences."
+        },
+        "Director": {
+            "Name": "David Fincher",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1962",
+            "Death": ""
+        },
+        "ImagePath": "fight_club.jpg",
+        "Featured": true
+    },
+    {
+        "_id": {
+            "$oid": "6564c0cbf34a5a77e159f98a"
+        },
+        "Title": "The Social Network",
+        "Description": "The story of Mark Zuckerberg as he creates the social networking site Facebook, navigating through its rise to fame and the resulting lawsuits.",
+        "Genre": {
+            "Name": "Drama",
+            "Description": "Movies portraying realistic or fictional human emotions and experiences."
+        },
+        "Director": {
+            "Name": "David Fincher",
+            "Bio": "Director known for various acclaimed films.",
+            "Birth": "1962",
+            "Death": ""
+        },
+        "ImagePath": "the_social_network.jpg",
+        "Featured": true
+    }
+]
