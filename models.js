@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 
-//define the structure of movie documents in the collection
+//define the structure of MOVIE documents in the collection
 let movieSchema = mongoose.Schema({
     title: { type: String, required: true },
     Description: { type: String, required: true },
@@ -22,6 +22,19 @@ let movieSchema = mongoose.Schema({
     Featured: Boolean
 });
 
+//define the structure of GENRE documents in the collection
+/* let genreSchema = mongoose.Schema({
+    Name: {
+        type: String,
+        required: true
+    },
+    Description: {
+        type: String,
+        required: true
+    }
+}); */
+
+//define the structure of USER documents in the collection
 let userSchema = mongoose.Schema({
     Username: { type: String, required: true },
     Password: { type: String, required: true },
@@ -33,8 +46,10 @@ let userSchema = mongoose.Schema({
 //Models in Mongoose act as constructors for MongoDB documents. They allow you to create, read, update, and delete documents
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
+/* let Genre = mongoose.model('Genre', genreSchema); */
 
 //export the models so they can be imported into other files in the project (like index.js)
 module.exports.Movie = Movie;
 module.exports.User = User;
+/* module.exports.Genre = Genre; */ // Export the Genres model
 
