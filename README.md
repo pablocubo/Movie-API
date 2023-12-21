@@ -11,7 +11,7 @@ LetFlix is a web application that serves as a movie database, allowing users to 
 - [Endpoints](#endpoints)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## About
 
@@ -34,32 +34,32 @@ bash
 Copy code
 npm install
 Set up the necessary environment variables.
-Usage
+## Usage
 To start the server, use the following command:
 
 bash
 Copy code
 npm start
-Endpoints
+## Endpoints
 Users
-GET /users - Retrieve all users.
-POST /users - Create a new user.
-GET /users/:Username - Retrieve a user by username.
-PUT /users/:Username - Update a user's information.
-DELETE /users/:userId - Delete a user by ID.
+### GET /users - Retrieve all users.
+### POST /users - Create a new user.
+### GET /users/:Username - Retrieve a user by username.
+### PUT /users/:Username - Update a user's information.
+### DELETE /users/:userId - Delete a user by ID.
 Movies
-GET /movies - Retrieve all movies.
-GET /movies/:Title - Retrieve a movie by title.
-GET /movies/genres/:genreName - Retrieve a genre by name.
+### GET /movies - Retrieve all movies.
+### GET /movies/:Title - Retrieve a movie by title.
+### GET /movies/genres/:genreName - Retrieve a genre by name.
 Favorites
-POST /users/:userId/favorites - Add a movie to a user's favorites.
-DELETE /users/:Username/movies/:MovieID - Remove a movie from a user's favorites.
+### POST /users/:userId/favorites - Add a movie to a user's favorites.
+### DELETE /users/:Username/movies/:MovieID - Remove a movie from a user's favorites.
 Directors
-GET /directors/:Name - Retrieve data about a director by name.
-Technologies Used
+### GET /directors/:Name - Retrieve data about a director by name.
+## Technologies Used
 Node.js
 Express.js
 MongoDB
 Mongoose
-Contributing
+## Contributing
 Contributions are welcome! Feel free to fork the project, create a branch, and submit pull requests.
