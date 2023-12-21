@@ -39,7 +39,8 @@ To start the server, use the following command:
 
 ```bash
 Copy code
-npm start.
+npm start
+```
 
 ## Endpoints
 Users
