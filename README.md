@@ -37,9 +37,10 @@ Set up the necessary environment variables.
 ## Usage
 To start the server, use the following command:
 
-bash
+```bash
 Copy code
-npm start
+npm start.
+
 ## Endpoints
 Users
 ### GET /users - Retrieve all users.
