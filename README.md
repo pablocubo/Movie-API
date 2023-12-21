@@ -38,8 +38,7 @@ Set up the necessary environment variables.
 To start the server, use the following command:
 
 ```bash
-Copy code
-npm start
+Copy code npm start
 ```
 
 ## Endpoints
