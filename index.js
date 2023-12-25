@@ -2,10 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
-const app = express();
-
 // Middleware for parsing JSON requests
+const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// importing auth.js file
+let auth = require('./auth')(app);
+
+// Import passport and passport.js
+const passport = require('passport');
+require('./passport');
 
 // Integrating Mongoose with a REST API
 const Movies = Models.Movie;
@@ -33,8 +40,6 @@ db.once('open', function () {
 app.get('/', (req, res) => {
     res.send("Welcome to myFlix!");
 });
-
-
 //The folloving code app.(post,get,put,delete) is for the CRUD operations
 
 // CREATE (POST) add a new user
@@ -62,31 +67,6 @@ app.post('/users', async (req, res) => {
             console.error(error);
             res.status(500).send('Error: ' + error);
         });
-});
-// CREATE a movie to user's favorites
-app.post('/users/:userId/favorites', async (req, res) => {
-    const userId = req.params.userId;
-    const { MovieId } = req.body;
-
-    try {
-        const user = await Users.findById(userId);
-        if (!user) {
-            return res.status(404).send('User not found');
-        }
-
-        // Check if the movie is already in favorites
-        if (user.favorites.includes(MovieId)) {
-            return res.status(400).send('Movie already in favorites');
-        }
-
-        user.favorites.push(MovieId);
-        const updatedUser = await user.save();
-
-        res.json(updatedUser);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error adding movie to favorites: ' + error.message);
-    }
 });
 // READ (GET) all users
 app.get('/users', async (req, res) => {
@@ -145,16 +125,16 @@ app.post('/users/:Username/movies/:MovieID', async (req, res) => {
             res.status(500).send('Error: ' + err);
         });
 });
-
 //READ (GET) all movies
-app.get('/movies', async (req, res) => {
-    try {
-        const movies = await Movies.find();
-        res.json(movies);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-    }
+app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    await Movies.find() // Corrected to match the case in the database
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
 });
 //READ (GET) a single movie by title
 app.get('/movies/:Title', async (req, res) => {

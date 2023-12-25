@@ -6,7 +6,7 @@
         "Email": "user2@example.com",
         "Username": "John Doe2",
         "Password": "pass1223",
-        "Birtday": {
+        "Birthday": {
             "$date": "1970-01-01T00:00:00Z"
         },
         "FavoriteMovies": [
@@ -22,7 +22,7 @@
         "Email": "user3@example.com",
         "Username": "John Doe3",
         "Password": "pass1223",
-        "Birtday": {
+        "Birthday": {
             "$date": "1970-01-01T00:00:00Z"
         },
         "FavoriteMovies": [
@@ -38,7 +38,7 @@
         "Email": "user4@example.com",
         "Username": "John Doe4",
         "Password": "pass1223",
-        "Birtday": {
+        "Birthday": {
             "$date": "1970-01-01T00:00:00Z"
         },
         "FavoriteMovies": [
@@ -54,7 +54,7 @@
         "Email": "user5@example.com",
         "Username": "John Doe5",
         "Password": "pass1223",
-        "Birtday": {
+        "Birthday": {
             "$date": "1970-01-01T00:00:00Z"
         },
         "FavoriteMovies": [
