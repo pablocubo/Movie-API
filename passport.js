@@ -38,7 +38,7 @@ passport.use(
 
 passport.use(new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'your_jwt_secret'
+    secretOrKey: 'Calcetin28'
 }, async (jwtPayload, callback) => {
     return await Users.findById(jwtPayload._id)
         .then((user) => {

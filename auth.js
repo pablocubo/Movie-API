@@ -1,4 +1,4 @@
-const jwtSecret = 'your_jwt_secret'; // This has to be the same key used in the JWTStrategy
+const jwtSecret = 'Calcetin28'; // This has to be the same key used in the JWTStrategy
 const jwt = require('jsonwebtoken'),
     passport = require('passport');
 
@@ -10,7 +10,7 @@ let generateJWTToken = (user) => {
         expiresIn: '7d', //This specifies that the token will expire in 7 days
         algorithm: 'HS256' // This is the algorithm used to "sign" or encode the values off the JWT
     });
-};
+}
 
 /* POST login. */
 module.exports = (router) => {
@@ -18,18 +18,18 @@ module.exports = (router) => {
         passport.authenticate('local', { session: false }, (error, user, info) => {
             if (error || !user) {
                 return res.status(400).json({
-                    message: 'Something is not right',
+                    message: 'Invalid credentials',
                     user: user
                 });
             }
-            req.login(user, { session: false },
-                (error) => {
-                    if (error) {
-                        res.send(error);
-                    }
-                    let token = generateJWTToken(user.toJSON());
-                    return res.json({ user, token });
-                });
+            req.login(user, { session: false }, (error) => {
+                if (error) {
+                    return res.status(500).send(error);
+                }
+
+                let token = generateJWTToken(user.toJSON());
+                return res.json({ user, token });
+            });
         })(req, res);
     });
-};
+}

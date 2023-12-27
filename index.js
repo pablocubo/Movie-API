@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
@@ -13,6 +14,9 @@ let auth = require('./auth')(app);
 // Import passport and passport.js
 const passport = require('passport');
 require('./passport');
+
+// log all requests
+app.use(morgan('common'));
 
 // Integrating Mongoose with a REST API
 const Movies = Models.Movie;
@@ -43,7 +47,7 @@ app.get('/', (req, res) => {
 //The folloving code app.(post,get,put,delete) is for the CRUD operations
 
 // CREATE (POST) add a new user
-app.post('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post('/users', /* passport.authenticate('jwt', { session: false }), */ async (req, res) => {
     await Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
