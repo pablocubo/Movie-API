@@ -23,6 +23,4 @@ WiredTiger.lock
 WiredTiger.turtle
 WiredTiger.wt
 WiredTigerHS.wt
-passport.js
-auth.js
 access.log
