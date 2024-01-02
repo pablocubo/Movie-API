@@ -1,5 +1,6 @@
 //typically placed at the beginning of a Node.js file to import the 'mongoose' library
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 
 //define the structure of MOVIE documents in the collection
@@ -43,6 +44,13 @@ let userSchema = mongoose.Schema({
     FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
 });
 
+userSchema.statics.hashPassword = (password) => {
+    return bcrypt.hashSync(password, 10);
+};
+
+userSchema.methods.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.Password);
+};
 //Models in Mongoose act as constructors for MongoDB documents. They allow you to create, read, update, and delete documents
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);

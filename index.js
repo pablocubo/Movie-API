@@ -2,12 +2,27 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
+const { check, validationResult } = require('express-validator');
 
 // Middleware for parsing JSON requests
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// CORS
+const cors = require('cors');
+let allowedOrigins = ['http:localhost:8080', 'http://testsite.com'];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isnt found on the list of allowed origins
+            let message = 'The CORS policy for this application doesnt allow access from origin ' + origin;
+            return callback(new Error(message), false);
+        }
+        return callback(null, true);
+    }
+}));
 // importing auth.js file
 let auth = require('./auth')(app);
 
@@ -46,32 +61,45 @@ app.get('/', (req, res) => {
 });
 //The folloving code app.(post,get,put,delete) is for the CRUD operations
 
+
 // CREATE (POST) add a new user
-app.post('/users', /* passport.authenticate('jwt', { session: false }), */ async (req, res) => {
-    await Users.findOne({ Username: req.body.Username })
-        .then((user) => {
-            if (user) {
-                return res.status(400).send(req.body.Username + 'already exists');
-            } else {
-                Users
-                    .create({
-                        Username: req.body.Username,
-                        Password: req.body.Password,
-                        Email: req.body.Email,
-                        Birthday: req.body.Birthday
-                    })
-                    .then((user) => { res.status(201).json(user) })
-                    .catch((error) => {
-                        console.error(error);
-                        res.status(500).send('Error: ' + error);
-                    })
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send('Error: ' + error);
-        });
+app.post('/users', [
+    check('Username', 'Username is required').isLength({ min: 5 }),
+    check('Username', 'Username contains non-alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()
+], async (req, res) => {
+    // Check the validation objects for errors
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    // Hash the password
+    let hashedPassword = Users.hashPassword(req.body.Password);
+
+    try {
+        const existingUser = await Users.findOne({ Username: req.body.Username });
+
+        if (existingUser) {
+            return res.status(400).send(req.body.Username + ' already exists');
+        } else {
+            const newUser = await Users.create({
+                Username: req.body.Username,
+                Password: hashedPassword,
+                Email: req.body.Email,
+                Birthday: req.body.Birthday
+            });
+
+            const responseMessage = `User '${req.body.Username}' created. Use the '/login/' endpoint to obtain the JWT token.`;
+            return res.status(201).json({ user: newUser, message: responseMessage });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send('Error: ' + error);
+    }
 });
+
 // READ (GET) all users
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
     await Users.find()
@@ -284,3 +312,4 @@ const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
     console.log('Listening on Port ' + port);
 });
+
