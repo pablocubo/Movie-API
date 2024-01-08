@@ -37,8 +37,26 @@ app.use(morgan('common'));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/letflix_data', {
+// MongoDB connection locally
+/* mongoose.connect('mongodb://127.0.0.1:27017/letflix_data', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch((error) => {
+        console.error('Error connecting to MongoDB:', error);
+    });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', function () {
+    console.log('Connected to MongoDB');
+}); */
+
+//MongoDB connection online
+mongoose.connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })

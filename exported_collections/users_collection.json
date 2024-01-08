@@ -1,14 +1,10 @@
 [
     {
-        "_id": {
-            "$oid": "6564ca07f34a5a77e159f991"
-        },
+        "_id": {},
         "Email": "user2@example.com",
         "Username": "John Doe2",
         "Password": "pass1223",
-        "Birthday": {
-            "$date": "1970-01-01T00:00:00Z"
-        },
+        "Birthday": {},
         "FavoriteMovies": [
             "The Godfather",
             "Inception",
@@ -16,15 +12,11 @@
         ]
     },
     {
-        "_id": {
-            "$oid": "6564ca15f34a5a77e159f992"
-        },
+        "_id": {},
         "Email": "user3@example.com",
         "Username": "John Doe3",
         "Password": "pass1223",
-        "Birthday": {
-            "$date": "1970-01-01T00:00:00Z"
-        },
+        "Birthday": {},
         "FavoriteMovies": [
             "The Godfather",
             "Inception",
@@ -32,15 +24,11 @@
         ]
     },
     {
-        "_id": {
-            "$oid": "6564ca21f34a5a77e159f993"
-        },
+        "_id": {},
         "Email": "user4@example.com",
         "Username": "John Doe4",
         "Password": "pass1223",
-        "Birthday": {
-            "$date": "1970-01-01T00:00:00Z"
-        },
+        "Birthday": {},
         "FavoriteMovies": [
             "The Godfather",
             "Inception",
@@ -48,15 +36,11 @@
         ]
     },
     {
-        "_id": {
-            "$oid": "6564ca2df34a5a77e159f994"
-        },
+        "_id": {},
         "Email": "user5@example.com",
         "Username": "John Doe5",
         "Password": "pass1223",
-        "Birthday": {
-            "$date": "1970-01-01T00:00:00Z"
-        },
+        "Birthday": {},
         "FavoriteMovies": [
             "The Godfather",
             "Inception",

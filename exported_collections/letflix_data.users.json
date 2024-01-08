@@ -1,0 +1,90 @@
+{
+  "_id": {
+    "$oid": "6564ca07f34a5a77e159f991"
+  },
+  "Email": "user2@example.com",
+  "Username": "John Doe2",
+  "Password": "pass1223",
+  "Birthday": {
+    "$date": "1970-01-01T00:00:00.000Z"
+  },
+  "FavoriteMovies": [
+    "The Godfather",
+    "Inception",
+    "The Matrix"
+  ]
+}
+{
+  "_id": {
+    "$oid": "6564ca15f34a5a77e159f992"
+  },
+  "Email": "user3@example.com",
+  "Username": "John Doe3",
+  "Password": "pass1223",
+  "Birthday": {
+    "$date": "1970-01-01T00:00:00.000Z"
+  },
+  "FavoriteMovies": [
+    "The Godfather",
+    "Inception",
+    "The Matrix"
+  ]
+}
+{
+  "_id": {
+    "$oid": "6564ca21f34a5a77e159f993"
+  },
+  "Email": "user4@example.com",
+  "Username": "John Doe4",
+  "Password": "pass1223",
+  "Birthday": {
+    "$date": "1970-01-01T00:00:00.000Z"
+  },
+  "FavoriteMovies": [
+    "The Godfather",
+    "Inception",
+    "The Matrix"
+  ]
+}
+{
+  "_id": {
+    "$oid": "6564ca2df34a5a77e159f994"
+  },
+  "Email": "user5@example.com",
+  "Username": "John Doe5",
+  "Password": "pass1223",
+  "Birthday": {
+    "$date": "1970-01-01T00:00:00.000Z"
+  },
+  "FavoriteMovies": [
+    "The Godfather",
+    "Inception",
+    "The Matrix"
+  ]
+}
+{
+  "_id": {
+    "$oid": "659431b6f0d5641e89658b6d"
+  },
+  "Username": "pablocubo2",
+  "Password": "$2b$10$1.yMjN9BbUFAHAs51bUTuexS2lG9U6OmhcHdqjqUqXOLHBMJJqG7u",
+  "Email": "pablo.lara.roloff@gmail.com",
+  "Birthday": {
+    "$date": "1986-12-25T00:00:00.000Z"
+  },
+  "FavoriteMovies": [],
+  "__v": 0
+}
+{
+  "_id": {
+    "$oid": "659432ecf0d5641e89658b70"
+  },
+  "Username": "pablocubo",
+  "Password": "Calcetin28",
+  "Email": "pabloupdated@gmail.com",
+  "Birthday": {
+    "$date": "1986-12-25T00:00:00.000Z"
+  },
+  "FavoriteMovies": [],
+  "__v": 0
+}

@@ -1,0 +1,6 @@
+mongoimport --uri mongodb+srv://pablocubo:Calcetin28.@cluster0.mc6bbuw.mongodb.net/letflix_data --collection users --type json --file exported_collections/letflix_data.users.json
+
+mongoimport --uri mongodb+srv://pablocubo:Calcetin28.@cluster0.mc6bbuw.mongodb.net/letflix_data --collection movies --type json --file exported_collections/movies_collection
+
+mongoimport --uri mongodb+srv://pablocubo:Calcetin28.@cluster0.mc6bbuw.mongodb.net/letflix_data --collection genres --type json --file exported_collections/letflix_data.genres.json
+
