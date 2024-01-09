@@ -56,22 +56,7 @@ db.once('open', function () {
 }); */
 
 //MongoDB connection online
-mongoose.connect(process.env.CONNECTION_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-    .then(() => {
-        console.log('Connected to MongoDB');
-    })
-    .catch((error) => {
-        console.error('Error connecting to MongoDB:', error);
-    });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function () {
-    console.log('Connected to MongoDB');
-});
+mongoose.connect(process.env.CONNECTION_URI);
 
 // Define your routes and other middleware below this point
 app.get('/', (req, res) => {
