@@ -5,22 +5,22 @@ const bcrypt = require('bcrypt');
 
 //define the structure of MOVIE documents in the collection
 let movieSchema = mongoose.Schema({
-    title: { type: String, required: true },
-    Description: { type: String, required: true },
-    Genre: {
-        Name: String,
-        Description: String
-    },
-    Director: {
-        Name: String,
-        Bio: String,
-        Birth: String,
-        Death: String
-    },
-    Actors: [String],
+  title: { type: String, required: true },
+  Description: { type: String, required: true },
+  Genre: {
+    Name: String,
+    Description: String
+  },
+  Director: {
+    Name: String,
     Bio: String,
-    ImagePath: String,
-    Featured: Boolean
+    Birth: String,
+    Death: String
+  },
+  Actors: [String],
+  Bio: String,
+  ImagePath: String,
+  Featured: Boolean
 });
 
 //define the structure of GENRE documents in the collection
@@ -37,19 +37,20 @@ let movieSchema = mongoose.Schema({
 
 //define the structure of USER documents in the collection
 let userSchema = mongoose.Schema({
-    Username: { type: String, required: true },
-    Password: { type: String, required: true },
-    Email: { type: String, required: true },
-    Birthday: Date,
-    FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
+  Username: { type: String, required: true },
+  /* Password: { type: String, required: true }, */
+  Email: { type: String, required: true },
+  Birthday: Date,
+  FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
 });
 
+//define the structure of USER documents in the collection
 userSchema.statics.hashPassword = (password) => {
-    return bcrypt.hashSync(password, 10);
+  return bcrypt.hashSync(password, 10);
 };
 
 userSchema.methods.validatePassword = function (password) {
-    return bcrypt.compareSync(password, this.Password);
+  return bcrypt.compareSync(password, this.Password);
 };
 //Models in Mongoose act as constructors for MongoDB documents. They allow you to create, read, update, and delete documents
 let Movie = mongoose.model('Movie', movieSchema);
