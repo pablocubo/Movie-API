@@ -62,8 +62,8 @@ mongoose.connect(process.env.CONNECTION_URI);
 app.get('/', (req, res) => {
   res.send("Welcome to myFlix!");
 });
-//The folloving code app.(post,get,put,delete) is for the CRUD operations
 
+//The folloving code app.(post,get,put,delete) is for the CRUD operations
 
 // CREATE (POST) add a new user
 app.post('/users', [
@@ -106,7 +106,6 @@ app.post('/users', [
     return res.status(500).send('Error: ' + error);
   }
 });
-
 // READ (GET) all users
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.find()
