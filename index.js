@@ -14,14 +14,14 @@ const cors = require('cors');
 let allowedOrigins = ['http:localhost:8080', 'http://testsite.com'];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isnt found on the list of allowed origins
-      let message = 'The CORS policy for this application doesnt allow access from origin ' + origin;
-      return callback(new Error(message), false);
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isnt found on the list of allowed origins
+            let message = 'The CORS policy for this application doesnt allow access from origin ' + origin;
+            return callback(new Error(message), false);
+        }
+        return callback(null, true);
     }
-    return callback(null, true);
-  }
 }));
 // importing auth.js file
 let auth = require('./auth')(app);
@@ -81,30 +81,26 @@ app.post('/users', [
   // Hash the password
   let hashedPassword = Users.hashPassword(req.body.Password);
 
-  try {
-    const existingUser = await Users.findOne({ Username: req.body.Username });
-    let responseUser = { username: newUser.Username, email: newUser.Email, birthday: newUser.Birthday.toDateString };
-    if (existingUser) {
-      return res.status(400).send(req.body.Username + ' already exists');
-    } else {
-      const newUser = await Users.create({
-        Username: req.body.Username,
-        Password: hashedPassword,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
-      });
+    try {
+        const existingUser = await Users.findOne({ Username: req.body.Username });
 
-      // Remove the Password field before sending the response
+        if (existingUser) {
+            return res.status(400).send(req.body.Username + ' already exists');
+        } else {
+            const newUser = await Users.create({
+                Username: req.body.Username,
+                Password: hashedPassword,
+                Email: req.body.Email,
+                Birthday: req.body.Birthday
+            });
 
-
-      const responseMessage = `User '${req.body.Username}' created. Use the '/login/' endpoint to obtain the JWT token.`;
-      return res.status(201).json({ message: responseMessage });
+            const responseMessage = `User '${req.body.Username}' created. Use the '/login/' endpoint to obtain the JWT token.`;
+            return res.status(201).json({ user: newUser, message: responseMessage });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send('Error: ' + error);
     }
-
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send('Error: ' + error);
-  }
 });
 // READ (GET) all users
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
@@ -169,15 +165,15 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
     });
 });
 //READ (GET) all movies
-app.get('/movies', async (req, res) => {
-  await Movies.find() // Corrected to match the case in the database
-    .then((movies) => {
-      res.status(201).json(movies);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send('Error: ' + error);
-    });
+app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    await Movies.find() // Corrected to match the case in the database
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
 });
 //READ (GET) a single movie by title
 app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), async (req, res) => {
