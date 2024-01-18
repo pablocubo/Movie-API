@@ -83,11 +83,7 @@ app.post('/users', [
 
   try {
     const existingUser = await Users.findOne({ Username: req.body.Username });
-<<<<<<< Updated upstream
-
-=======
     let responseUser = { username: newUser.Username, email: newUser.Email, birthday: newUser.Birthday.toDateString };
->>>>>>> Stashed changes
     if (existingUser) {
       return res.status(400).send(req.body.Username + ' already exists');
     } else {
@@ -98,11 +94,6 @@ app.post('/users', [
         Birthday: req.body.Birthday
       });
 
-<<<<<<< Updated upstream
-      const responseMessage = `User '${req.body.Username}' created. Use the '/login/' endpoint to obtain the JWT token.`;
-      return res.status(201).json({ user: newUser, message: responseMessage });
-    }
-=======
       // Remove the Password field before sending the response
 
 
@@ -110,7 +101,6 @@ app.post('/users', [
       return res.status(201).json({ message: responseMessage });
     }
 
->>>>>>> Stashed changes
   } catch (error) {
     console.error(error);
     return res.status(500).send('Error: ' + error);
@@ -180,17 +170,10 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
     });
 });
 //READ (GET) all movies
-<<<<<<< Updated upstream
 app.get('/movies', async (req, res) => {
   await Movies.find() // Corrected to match the case in the database
     .then((movies) => {
       res.status(201).json(movies);
-=======
-app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.find() // Corrected to match the case in the database
-    .then((movies) => {
-      res.status(200).json(movies);
->>>>>>> Stashed changes
     })
     .catch((error) => {
       console.error(error);
