@@ -13,7 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 const cors = require('cors');
 let allowedOrigins = ['http:localhost:1234', 'http://testsite.com', 'http://testsite2.com'];
 
-app.use(cors({
+
+app.use(cors());
+
+/* app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isnt found on the list of allowed origins
@@ -22,7 +25,7 @@ app.use(cors({
         }
         return callback(null, true);
     }
-}));
+})); */
 // importing auth.js file
 let auth = require('./auth')(app);
 
