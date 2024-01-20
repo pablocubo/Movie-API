@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['http:localhost:1234', 'http://testsite.com'];
+let allowedOrigins = ['http:localhost:1234', 'http://testsite.com', 'http://testsite2.com'];
 
 app.use(cors({
     origin: (origin, callback) => {
