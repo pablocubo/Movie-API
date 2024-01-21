@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 //define the structure of MOVIE documents in the collection
 let movieSchema = mongoose.Schema({
-    title: { type: String, required: true },
+    Title: { type: String, required: true },
     Description: { type: String, required: true },
     Genre: {
         Name: String,
