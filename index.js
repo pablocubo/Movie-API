@@ -11,9 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['http:localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http:localhost:1234', 'http://testsite.com', 'http://testsite2.com'];
 
-app.use(cors({
+
+app.use(cors());
+
+/* app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isnt found on the list of allowed origins
@@ -22,7 +25,7 @@ app.use(cors({
         }
         return callback(null, true);
     }
-}));
+})); */
 // importing auth.js file
 let auth = require('./auth')(app);
 
@@ -165,18 +168,18 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
     });
 });
 //READ (GET) all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
-    await Movies.find() // Corrected to match the case in the database
-        .then((movies) => {
-            res.status(201).json(movies);
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send('Error: ' + error);
-        });
+app.get('/movies', { session: false }, async (req, res) => {
+  await Movies.find() // Corrected to match the case in the database
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error: ' + error);
+    });
 });
 //READ (GET) a single movie by title
-app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/movies/:Title', async (req, res) => {
   const title = req.params.Title; // Corrected to match the case in the URL
   try {
     const movie = await Movies.findOne(
