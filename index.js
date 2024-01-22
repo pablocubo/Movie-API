@@ -15,7 +15,7 @@ const cors = require('cors');
 let allowedOrigins = ['http://localhost:1234', 'http://testsite.com', 'http://testsite2.com'];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: process.env.CORS_ORIGIN || allowedOrigins,
 }));
 
 // importing auth.js file
