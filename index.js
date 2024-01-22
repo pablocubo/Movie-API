@@ -11,21 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['http:localhost:1234', 'http://testsite.com', 'http://testsite2.com'];
 
+let allowedOrigins = ['http://localhost:1234', 'http://testsite.com', 'http://testsite2.com'];
 
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+}));
 
-/* app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isnt found on the list of allowed origins
-            let message = 'The CORS policy for this application doesnt allow access from origin ' + origin;
-            return callback(new Error(message), false);
-        }
-        return callback(null, true);
-    }
-})); */
 // importing auth.js file
 let auth = require('./auth')(app);
 
@@ -84,26 +76,26 @@ app.post('/users', [
   // Hash the password
   let hashedPassword = Users.hashPassword(req.body.Password);
 
-    try {
-        const existingUser = await Users.findOne({ Username: req.body.Username });
+  try {
+    const existingUser = await Users.findOne({ Username: req.body.Username });
 
-        if (existingUser) {
-            return res.status(400).send(req.body.Username + ' already exists');
-        } else {
-            const newUser = await Users.create({
-                Username: req.body.Username,
-                Password: hashedPassword,
-                Email: req.body.Email,
-                Birthday: req.body.Birthday
-            });
+    if (existingUser) {
+      return res.status(400).send(req.body.Username + ' already exists');
+    } else {
+      const newUser = await Users.create({
+        Username: req.body.Username,
+        Password: hashedPassword,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday
+      });
 
-            const responseMessage = `User '${req.body.Username}' created. Use the '/login/' endpoint to obtain the JWT token.`;
-            return res.status(201).json({ user: newUser, message: responseMessage });
-        }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).send('Error: ' + error);
+      const responseMessage = `User '${req.body.Username}' created. Use the '/login/' endpoint to obtain the JWT token.`;
+      return res.status(201).json({ user: newUser, message: responseMessage });
     }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Error: ' + error);
+  }
 });
 // READ (GET) all users
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
