@@ -166,7 +166,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
     });
 });
 //READ (GET) all movies
-app.get('/movies', async (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.find() // Corrected to match the case in the database
     .then((movies) => {
       res.status(201).json(movies);
@@ -177,7 +177,7 @@ app.get('/movies', async (req, res) => {
     });
 });
 //READ (GET) a single movie by title
-app.get('/movies/:Title', async (req, res) => {
+app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const title = req.params.Title; // Corrected to match the case in the URL
   try {
     const movie = await Movies.findOne(
