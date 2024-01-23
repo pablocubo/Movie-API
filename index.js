@@ -39,7 +39,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // MongoDB connection locally
-/* mongoose.connect('mongodb://127.0.0.1:27017/letflix_data', {
+mongoose.connect('mongodb://127.0.0.1:27017/letflix_data', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
@@ -54,10 +54,10 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function () {
     console.log('Connected to MongoDB');
-}); */
+});
 
 //MongoDB connection online
-mongoose.connect(process.env.CONNECTION_URI);
+/* mongoose.connect(process.env.CONNECTION_URI); */
 
 // Define your routes and other middleware below this point
 app.get('/', (req, res) => {
