@@ -38,8 +38,8 @@ app.use(morgan('common'));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// MongoDB connection locally
-mongoose.connect('mongodb://127.0.0.1:27017/letflix_data', {
+// MongoDB connection 
+mongoose.connect('https://letflix-0d183cd4a94e.herokuapp.com', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
@@ -299,7 +299,6 @@ app.delete('/users/:userId', passport.authenticate('jwt', { session: false }), a
     res.status(500).send('Error deleting user: ' + error.message);
   }
 });
-
 
 // Error-handling
 app.use('/documentation', express.static('public'));
