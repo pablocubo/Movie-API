@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com', 'http://localhost:1234/'];
+let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com', 'http://localhost:1234/', 'http://localhost:1234'];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -39,7 +39,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // MongoDB connection 
-mongoose.connect('https://letflix-0d183cd4a94e.herokuapp.com', {
+mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
