@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com'];
+let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com', 'http://localhost:1234/'];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -40,20 +40,20 @@ const Users = Models.User;
 
 // MongoDB connection 
 mongoose.connect('https://letflix-0d183cd4a94e.herokuapp.com', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-    .then(() => {
-        console.log('Connected to MongoDB');
-    })
-    .catch((error) => {
-        console.error('Error connecting to MongoDB:', error);
-    });
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function () {
-    console.log('Connected to MongoDB');
+  console.log('Connected to MongoDB');
 });
 
 //MongoDB connection online
