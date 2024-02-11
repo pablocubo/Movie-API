@@ -27,11 +27,11 @@ module.exports = (router) => {
         if (error) {
           res.send(error);
         }
-        let token = generateJWTToken(user.toJSON());
+        const token = generateJWTToken(user.toJSON());
 
-        let responseUser = { username: user.Username, email: user.Email, birthday: user.Birthday.toDateString };
+        const responseUser = { username: user.Username, email: user.Email, birthday: user.Birthday.toDateString };
 
-        return res.json({ responseUser, message: 'Token generated. Use this JWT for authentication in future requests.', token });
+        return res.json({ user: responseUser, message: 'Token generated. Use this JWT for authentication in future requests.', token });
       });
     })(req, res);
   });
