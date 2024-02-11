@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 const { check, validationResult } = require('express-validator');
+require('dotenv').config() 
 
 // Middleware for parsing JSON requests
 const app = express();
@@ -11,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com', 'http://localhost:1234/', 'http://localhost:1234'];
+let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com', 'http://localhost:8080/', 'http://localhost:1234'];
 
 app.use(cors({
   origin: (origin, callback) => {
