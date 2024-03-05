@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 const cors = require('cors');
-let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com, http://localhost:1234'];
+let allowedOrigins = ['https://letflix-0d183cd4a94e.herokuapp.com', 'http://localhost:8080/', 'http://localhost:1234'];
 
 app.use(cors({
   origin: (origin, callback) => {
