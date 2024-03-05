@@ -23,18 +23,6 @@ let movieSchema = mongoose.Schema({
     Featured: Boolean
 });
 
-//define the structure of GENRE documents in the collection
-/* let genreSchema = mongoose.Schema({
-    Name: {
-        type: String,
-        required: true
-    },
-    Description: {
-        type: String,
-        required: true
-    }
-}); */
-
 //define the structure of USER documents in the collection
 let userSchema = mongoose.Schema({
   Username: { type: String, required: true },
