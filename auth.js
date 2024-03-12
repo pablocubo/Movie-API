@@ -29,7 +29,7 @@ module.exports = (router) => {
         }
         const token = generateJWTToken(user.toJSON());
 
-        const responseUser = { username: user.Username, email: user.Email, birthday: user.Birthday.toDateString, favoriteMovies: user.FavoriteMovies, _id: user._id,};
+        const responseUser = { username: user.Username, email: user.Email, birthday: user.Birthday.toDateString, _id: user._id,};
 
         return res.json({ user: responseUser, message: 'Token generated. Use this JWT for authentication in future requests.', token });
       });
