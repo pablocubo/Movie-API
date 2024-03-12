@@ -126,32 +126,6 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), as
       res.status(500).send('Error: ' + err);
     });
 });
-// UPDATE (PUT) a user's info, by username
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  //Condition to check added here to make sure that the user is updating their own information
-  if (req.params.Username !== req.body.Username) {
-    return res.status(400).send('Username does not match');
-  }
-  //Condition ends here
-  await Users.findOneAndUpdate({ Username: req.params.Username }, {
-    $set:
-    {
-      Username: req.body.Username,
-      Password: req.body.Password,
-      Email: req.body.Email,
-      Birthday: req.body.Birthday
-    }
-  },
-    { new: true }) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    })
-
-});
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.Username }, {
