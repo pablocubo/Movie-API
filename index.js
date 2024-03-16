@@ -126,6 +126,22 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), as
       res.status(500).send('Error: ' + err);
     });
 });
+// GET user's list of favorite movies
+app.get('/users/:Username/favorites', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    const user = await Users.findOne({ Username: req.params.Username }).populate('FavoriteMovies');
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Assuming 'FavoriteMovies' field stores references to movie documents
+    res.json(user.FavoriteMovies);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  }
+});
+
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.Username }, {
