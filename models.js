@@ -1,9 +1,10 @@
-//typically placed at the beginning of a Node.js file to import the 'mongoose' library
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
-//define the structure of MOVIE documents in the collection
+/**
+ * Schema for storing movie data.
+ * @constant {mongoose.Schema}
+ */
 let movieSchema = mongoose.Schema({
     Title: { type: String, required: true },
     Description: { type: String, required: true },
@@ -23,7 +24,10 @@ let movieSchema = mongoose.Schema({
     Featured: Boolean
 });
 
-//define the structure of USER documents in the collection
+/**
+ * Schema for storing user data.
+ * @constant {mongoose.Schema}
+ */
 let userSchema = mongoose.Schema({
   Username: { type: String, required: true },
   Password: { type: String, required: true },
@@ -32,21 +36,37 @@ let userSchema = mongoose.Schema({
   FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
 });
 
-//define the structure of USER documents in the collection
+/**
+ * Hashes the password using bcrypt.
+ * @param {string} password - The password to be hashed.
+ * @returns {string} The hashed password.
+ */
 userSchema.statics.hashPassword = (password) => {
   return bcrypt.hashSync(password, 10);
 };
-
+/**
+ * Validates the provided password against the stored hashed password.
+ * @param {string} password - The password to be validated.
+ * @returns {boolean} Returns true if the password is valid, false otherwise.
+ */
 userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.Password);
 };
-//Models in Mongoose act as constructors for MongoDB documents. They allow you to create, read, update, and delete documents
+/**
+ * Mongoose model for movies.
+ * @constant {mongoose.Model}
+ */
 let Movie = mongoose.model('Movie', movieSchema);
+/**
+ * Mongoose model for users.
+ * @constant {mongoose.Model}
+ */
 let User = mongoose.model('User', userSchema);
-/* let Genre = mongoose.model('Genre', genreSchema); */
 
-//export the models so they can be imported into other files in the project (like index.js)
+/**
+ * Exports the Movie and User models.
+ */
 module.exports.Movie = Movie;
 module.exports.User = User;
-/* module.exports.Genre = Genre; */ // Export the Genres model
+
 

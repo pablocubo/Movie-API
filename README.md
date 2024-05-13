@@ -1,66 +1,155 @@
-# LetFlix - Your Movie Database
+﻿# Movie API Documentation
 
-LetFlix is a web application that serves as a movie database, allowing users to manage their favorite movies and explore various movie details.
+This API provides information about movies, genres, and directors. Users can interact with the API to retrieve details about movies, genres, directors, create new users, and manage their favorite movies.
 
 ## Table of Contents
-
-- [About](#about)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Endpoints](#endpoints)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-
-
-## About
-
-LetFlix is a Node.js-based application that leverages Express.js and MongoDB to create a platform where users can register, manage their profiles, and add favorite movies to their collection. The application provides a range of endpoints to handle CRUD operations for users and movies.
-
-## Features
-
-- User authentication and registration.
-- CRUD operations for users and movies.
-- Adding and removing movies from a user's favorites.
-- Retrieving detailed information about movies, genres, and directors.
-
-## Installation
-
-1. Clone the repository.
-   ```bash
-   git clone https://github.com/your-username/your-repo.git
-Install dependencies.
-bash
-Copy code
-npm install
-Set up the necessary environment variables.
-## Usage
-To start the server, use the following command:
-
-```bash
-Copy code npm start
-```
+  - [1. Get All Movies](#1-get-all-movies)
+  - [2. Get Movie by ID](#2-get-movie-by-id)
+  - [3. Get Genre Description](#3-get-genre-description)
+  - [4. Get Director by Name](#4-get-director-by-name)
+  - [5. Create New User](#5-create-new-user)
+  - [6. Update User Details](#6-update-user-details)
+  - [7. Add Movie to User's Favorites](#7-add-movie-to-users-favorites)
+  - [8. Remove Movie from User's Favorites](#8-remove-movie-from-users-favorites)
+  - [9. Delete User](#9-delete-user)
 
 ## Endpoints
-Users
-### GET /users - Retrieve all users.
-### POST /users - Create a new user.
-### GET /users/:Username - Retrieve a user by username.
-### PUT /users/:Username - Update a user's information.
-### DELETE /users/:userId - Delete a user by ID.
-Movies
-### GET /movies - Retrieve all movies.
-### GET /movies/:Title - Retrieve a movie by title.
-### GET /movies/genres/:genreName - Retrieve a genre by name.
-Favorites
-### POST /users/:userId/favorites - Add a movie to a user's favorites.
-### DELETE /users/:Username/movies/:MovieID - Remove a movie from a user's favorites.
-Directors
-### GET /directors/:Name - Retrieve data about a director by name.
+
+### 1. Get All Movies
+
+- **Request:**
+  - Method: `GET`
+  - URL: `/movies`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: A JSON object containing data on all movies.
+
+### 2. Get Movie by ID
+
+- **Request:**
+  - Method: `GET`
+  - URL: `/movies/[id]`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: A JSON object containing data about a specific movie, including title, description, director details, genre with description, release date, image URL, and featured status.
+
+### 3. Get Genre Description
+
+- **Request:**
+  - Method: `GET`
+  - URL: `/movies/genre/[name]`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: A JSON object containing the description of a genre.
+
+### 4. Get Director by Name
+
+- **Request:**
+  - Method: `GET`
+  - URL: `/movies/director/[name]`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: A JSON object containing details about a director, including name, bio, birth date, and death date.
+
+### 5. Create New User
+
+- **Request:**
+  - Method: `POST`
+  - URL: `/users`
+  - Request Body Format: JSON
+    ```json
+    {
+      "username": "User",
+      "password": "123",
+      "email": "user@gmail.com",
+      "birthday": "1986-12-25"
+    }
+    ```
+
+- **Response:**
+  - Format: JSON
+  - Description: A JSON object with user details, including the new user's ID, version, date, and an empty list of favorite movies.
+
+### 6. Update User Details
+
+- **Request:**
+  - Method: `PUT`
+  - URL: `/users/[id]`
+  - Request Body Format: JSON (with at least one updated field)
+    ```json
+    {
+      "username": "user",
+      "email": "user@gmail.com"
+    }
+    ```
+
+- **Response:**
+  - Format: JSON
+  - Description: Updated user details.
+
+### 7. Add Movie to User's Favorites
+
+- **Request:**
+  - Method: `POST`
+  - URL: `/users/[id]/movies/[movie_id]`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: Updated user details.
+
+### 8. Remove Movie from User's Favorites
+
+- **Request:**
+  - Method: `DELETE`
+  - URL: `/users/[id]/movies/[movie_id]`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: Updated user details.
+
+### 9. Delete User
+
+- **Request:**
+  - Method: `DELETE`
+  - URL: `/users/[id]`
+  - Request Body: None
+
+- **Response:**
+  - Format: JSON
+  - Description: A message confirming the removal of the user.
+
 ## Technologies Used
-Node.js
-Express.js
-MongoDB
-Mongoose
-## Contributing
-Contributions are welcome! Feel free to fork the project, create a branch, and submit pull requests.
+
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- bcrypt
+- body-parser
+- cors
+- express-validator
+- jsonwebtoken
+- lodash
+- passport
+- passport-jwt
+- passport-local
+- uuid
+
+## Getting Started
+
+1. Install dependencies: `npm install`
+2. Start the server: `npm start` or for development with nodemon: `npm run dev`
+
+## Author
+
+- **Pablo Lara Roloff**
