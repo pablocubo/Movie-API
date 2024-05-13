@@ -137,6 +137,7 @@ app.post('/users', [
     return res.status(500).send('Error: ' + error);
   }
 });
+
 /**
  * Route to get all users
  * @name GetUsersRoute
@@ -144,7 +145,6 @@ app.post('/users', [
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  */
-
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Users.find()
     .then((users) => {
@@ -195,7 +195,6 @@ app.get('/users/:Username/favorites', passport.authenticate('jwt', { session: fa
     res.status(500).send('Error: ' + err);
   }
 });
-
 /**
  * Route to add a movie to a user's list of favorite movies
  * @name AddMovieToFavoritesRoute
@@ -217,6 +216,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
       res.status(500).send('Error: ' + err);
     });
 });
+
 /**
  * Route to get all movies
  * @name GetAllMoviesRoute
@@ -224,7 +224,6 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  */
-
 app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
   await Movies.find() // Corrected to match the case in the database
     .then((movies) => {
@@ -258,14 +257,14 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), asyn
     res.status(500).send('Error: ' + err);
   }
 });
+
 /**
- * Route to get a genre by name
+ * Route to get a genre by Description
  * @name GetGenreByNameRoute
  * @kind function
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  */
-
 app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
   Movies.findOne({ 'Genre.Name': req.params.genreName })
     .then((movie) => {
@@ -276,14 +275,14 @@ app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: fal
       res.status(500).send('Error: ' + err);
     });
 });
+
 /**
- * Route to get data about a director by name
+ * Route to Get Director by Name
  * @name GetDirectorByNameRoute
  * @kind function
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  */
-
 app.get('/directors/:Name', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const name = req.params.name;
   try {
@@ -297,6 +296,7 @@ app.get('/directors/:Name', passport.authenticate('jwt', { session: false }), as
     res.status(500).send('Error: ' + err);
   }
 });
+
 /**
  * Route to update a user's information by username
  * @name UpdateUserInfoRoute
@@ -304,7 +304,6 @@ app.get('/directors/:Name', passport.authenticate('jwt', { session: false }), as
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  */
-
 app.put('/users/:userId', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const userId = req.params.userId;
   const { Username, Password, Email, Birthday } = req.body;

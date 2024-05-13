@@ -27,11 +27,11 @@ This API provides information about movies, genres, and directors. Users can int
   - Format: JSON
   - Description: A JSON object containing data on all movies.
 
-### 2. Get Movie by ID
+### 2. Get Movie by Title
 
 - **Request:**
   - Method: `GET`
-  - URL: `/movies/[id]`
+  - URL: `/movies/[Title]`
   - Request Body: None
 
 - **Response:**
@@ -42,7 +42,7 @@ This API provides information about movies, genres, and directors. Users can int
 
 - **Request:**
   - Method: `GET`
-  - URL: `/movies/genre/[name]`
+  - URL: `/movies/genres/[genreName]`
   - Request Body: None
 
 - **Response:**
@@ -53,7 +53,7 @@ This API provides information about movies, genres, and directors. Users can int
 
 - **Request:**
   - Method: `GET`
-  - URL: `/movies/director/[name]`
+  - URL: `/directors/[Name]`
   - Request Body: None
 
 - **Response:**
@@ -83,7 +83,7 @@ This API provides information about movies, genres, and directors. Users can int
 
 - **Request:**
   - Method: `PUT`
-  - URL: `/users/[id]`
+  - URL: `/users/[userId]`
   - Request Body Format: JSON (with at least one updated field)
     ```json
     {
@@ -100,7 +100,7 @@ This API provides information about movies, genres, and directors. Users can int
 
 - **Request:**
   - Method: `POST`
-  - URL: `/users/[id]/movies/[movie_id]`
+  - URL: `/users/[Username]/movies/[MovieID]`
   - Request Body: None
 
 - **Response:**
@@ -111,7 +111,7 @@ This API provides information about movies, genres, and directors. Users can int
 
 - **Request:**
   - Method: `DELETE`
-  - URL: `/users/[id]/movies/[movie_id]`
+  - URL: `/users/[Username]/movies/[MovieID]`
   - Request Body: None
 
 - **Response:**
@@ -122,7 +122,7 @@ This API provides information about movies, genres, and directors. Users can int
 
 - **Request:**
   - Method: `DELETE`
-  - URL: `/users/[id]`
+  - URL: `/users/[userId]`
   - Request Body: None
 
 - **Response:**
